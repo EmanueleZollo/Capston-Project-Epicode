@@ -1,9 +1,6 @@
 package UnitedGymsProject.GymBrofriendly.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -24,6 +21,8 @@ public class Step {
     private String exerciseSet;
     private String restTime;
     private double weight;
-    // collegamento many-to-many con List<Plan>
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "plan_id")
+    private Plan plan;
 
 }

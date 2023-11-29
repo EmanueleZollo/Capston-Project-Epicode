@@ -21,6 +21,6 @@ public class Plan {
     private PlanType planType;
    @ManyToMany(mappedBy = "planList")
     private List<User> userList;
-   @OneToMany
+   @OneToMany(fetch = FetchType.LAZY, mappedBy = "plan", cascade = CascadeType.ALL)
     private List<Step> stepList;
 }
