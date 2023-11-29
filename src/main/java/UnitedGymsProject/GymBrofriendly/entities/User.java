@@ -10,7 +10,6 @@ import java.util.List;
 @Entity
 @Table(name = "utenti")
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString
 @Getter
 @Setter
@@ -24,6 +23,7 @@ public class User {
     private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
+    private String avatarUrl;
     @OneToOne
     @JoinColumn(name = "subscription_id")
     private Subscription subscription;
@@ -42,7 +42,8 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "event_id"))
     private List<Event> eventList;
-    private String avatarUrl;
-    private boolean healthCertificate;
+    @OneToOne
+    @JoinColumn(name = "healthcertificate_id")
+    private HealthCertificate healthCertificate;
 
 }
