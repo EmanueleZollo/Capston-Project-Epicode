@@ -53,7 +53,10 @@ public class HealthCertificateService {
         return healthCertificateRepository.save(newHCert);
     }
 
-    
+    public void findByIdAndDelete(UUID id) throws NotFoundException{
+        healthCertificateRepository.deleteById(id);
+    }
 
-    /*FUNZIONE CHE CARICA IL FILE AVATAR*/
+
+    /*FUNZIONE CHE CARICA IL FILE URL*/
 }
