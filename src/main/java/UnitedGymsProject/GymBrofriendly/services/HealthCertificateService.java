@@ -30,12 +30,12 @@ public class HealthCertificateService {
         return healthCertificateRepository.findAll(pageable);
     }
 
-    public HealthCertificate findById(UUID id){
+    public HealthCertificate findById(UUID id) throws NotFoundException{
         return healthCertificateRepository.findById(id).orElseThrow(
                 ()-> new NotFoundException("ID " + id + " non trovato"));
     }
 
-    public HealthCertificate findByUser(User user){
+    public HealthCertificate findByUser(User user) throws NotFoundException{
         return healthCertificateRepository.findByUser(user).orElseThrow(
                 ()-> new NotFoundException("Utente " + user.getId() + " non trovato"));
     }
