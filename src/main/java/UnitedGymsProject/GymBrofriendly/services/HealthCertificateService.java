@@ -25,7 +25,7 @@ public class HealthCertificateService {
     /*COLLEGARE CLOUDINARY*/
 
 
-    public Page<HealthCertificate> getCertificateList(int page, int size, String orderBy){
+    public Page<HealthCertificate> getCertificateSet(int page, int size, String orderBy){
         Pageable pageable = PageRequest.of(page,size, Sort.by(orderBy));
         return healthCertificateRepository.findAll(pageable);
     }

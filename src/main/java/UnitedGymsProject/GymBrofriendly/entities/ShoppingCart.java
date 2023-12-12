@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="carrello")
@@ -19,6 +20,6 @@ public class ShoppingCart {
     private double amountToBePaid;
     @OneToOne(mappedBy = "shoppingCart")
     private User user;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "shoppingCart", cascade = CascadeType.ALL)
-    private List<Product> products;
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE}, mappedBy = "shoppingCart")
+    private Set<ShoppingCartItem> shoppingCartItems;
 }
